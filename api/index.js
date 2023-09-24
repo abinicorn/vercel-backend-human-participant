@@ -2,8 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
-import {swaggerSpec} from './config/swaggerConfig';
-import authenticateToken from './middlewares/authenticateToken';
+import {swaggerSpec} from '../src/config/swaggerConfig';
+import authenticateToken from '../src/middlewares/authenticateToken';
 import cors from 'cors';
 
 dotenv.config();
@@ -40,14 +40,14 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // }));
 
 // Setup log4js
-const log4js = require('./utils/log4js')
+const log4js = require('../src/utils/log4js')
 
 app.use(cookieParser());
 
 // app.use(authenticateToken);
 
 // Setup our routes.
-import routes from './routes/index.js';
+import routes from '../src/routes/index.js';
 import cookieParser from "cookie-parser";
 app.use('/', routes);
 
